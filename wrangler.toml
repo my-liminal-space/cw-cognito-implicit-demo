@@ -20,6 +20,5 @@ kv_namespaces = [
 [env.production.vars]
 DOMAIN_NAME_ROOT = "deaddodgeydigitaldeals.com"
 COGNITO_ENDPOINT_URL = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_whR5F4xHk"
-COGNITO_LOGIN_CLIENT_ID = "5peen44ratf8dm4hpljvtlhd1m"
 COGNITO_LOGIN_HOSTNAME = "mls-cognito-auth8.deaddodgeydigitaldeals.com"
 SUBDOMAIN_NAME = "cw-cognito-implicit-demo"

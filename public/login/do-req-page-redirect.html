@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function getCookie(cookieName) {
+            var match = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+            if (match) return match[2];
+        }
+        function doRedirect() {
+            let redirectUrl = getCookie("Original-Request-Path");
+            //alert("Redirect to: " + redirectUrl);
+            window.location.replace(redirectUrl);
+        }
+    </script>
+</head>
+
+<body onload="doRedirect()">
+    Authentication ok, redirecting to requested page...
+</body>
+
+</html>

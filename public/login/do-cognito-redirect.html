@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function getCookie(cookieName) {
+            var match = document.cookie.match(new RegExp('(^| )' + cookieName + '=([^;]+)'));
+            if (match) return match[2];
+        }
+        function doRedirect() {
+            let originalReqPath = getCookie("Original-Request-Path");
+            //alert("Original Request Path: " + originalReqPath);
+            let redirectUrl = getCookie("Cognito-Login-URL");
+            //alert("Redirect to: " + redirectUrl);
+            window.location.replace(redirectUrl);
+        }
+    </script>
+</head>
+
+<body onload="doRedirect()">
+    Authentication require, redirecting to login page...
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    </head>
+    <body>
+<h1>My Liminal Space - Direct Site Asset Access and (basic) AWS Cognito Integration</h1>
+<p>Hello, this site provides a showcase for two simple libraries intended to aid building interactive web sites using Cloudflare Workers Sites.</p>
+<ul>
+    <li>@my-liminal-space/cw-site-assets (<a href="https://github.com/my-liminal-space/cw-site-assets">GitHub</a>, <a href="https://www.npmjs.com/package/@my-liminal-space/cw-site-assets">npm</a>) - fetch a site asset from the site KV instance by its path (allowing greater programmatic control over
+        which "asset" (a file in the "public" folder) is served in response to a request</li>
+    <li>@my-liminal-space/cw-validate-cognito-jwt (<a href="https://github.com/my-liminal-space/cw-validate-cognito-jwt">GitHub</a>, <a href="https://www.npmjs.com/package/@my-liminal-space/cw-validate-cognito-jwt">npm</a>) - validate an AWS Cognito generated JWT using a PEM cached in KV</li>
+</ul>
+<p>The <a href="https://github.com/my-liminal-space/cw-cognito-implicit-demo">GitHub repo</a> for this site includes a basic (but functional) integration with AWS Cognito using the Cognito provided Login UI.
+The worker checks to see if the requested path starts with "/req-auth8", if it does then a valid JWT needs to be available in a cookie
+called "AUTH8JWT".</p>
+<p>If no such cookie is available or the contents of the cookie is not a valid JWT (determined using @my-liminal-space/cw-validate-cognito-jwt), 
+a "redirect" page is served back to the client rather than the requested page (read from the site KV using @my-liminal-space/cw-site-assets).</p>
+<p>The redirect page uses client side JavaScript to direct the browser to the Cognito Login UI. Another page uses client side JavaScript to 
+receive the response from Cognito and a final page uses client side JavaScript to forward the user to the page they originally requested.</p>
+<p>While this approach "works" it is a "proof of concept", only suitable for simple cases where a basic login is all that is required. A better
+approach would be to go "full OAuth", which (potentially) avoids:</p>
+<ul>
+    <li>Sharing the "real" JWT with the client (reducing the need to trust the client)</li>
+    <li>Relying on the client having JavaScript enabled</li>
+    <li>Having all the redirects in the browser history (which messes up the "back button" behaviour)</li>
+</ul>
+<p>It is also worth noting that the implementation does not yet handle all potential error cases...</p>
+<p>The links below drive the demo. <em>NOTE:</em> in order to be able to log in, you will need to use the links on the Cognito login page to 
+create your own account (the email address you provide will not be shared with anyone/anything!).</p>
+<p>Here is <a href="/page-1.html">page 1</a></p>
+<p>Page 2 is <a href="/folder-1/page-2.html">here</a>.</p>
+<p>Can you get to <a href="/req-auth8/page-3.html">page 3</a>?</p>
+    </body>
+</html>

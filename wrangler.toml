@@ -1,0 +1,25 @@
+name = "cw-cognito-implicit-demo"
+
+account_id = "1a281281e78d332d3a9c862b38fbf2bf"
+zone_id = "029cc4b7a5c892f22bfd8e085132a639"
+
+type = "webpack"
+workers_dev = false
+site = { bucket = "./public" }
+compatibility_date = "2021-10-31"
+
+
+[env.production]
+route = "https://cw-cognito-implicit-demo.deaddodgeydigitaldeals.com/*"
+
+kv_namespaces = [ 
+	 { binding = "MLS_COGNITO", id = "9f6a4a5d08984fee970800343ac20227" }
+]
+
+
+[env.production.vars]
+DOMAIN_NAME_ROOT = "deaddodgeydigitaldeals.com"
+COGNITO_ENDPOINT_URL = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_whR5F4xHk"
+COGNITO_LOGIN_CLIENT_ID = "5peen44ratf8dm4hpljvtlhd1m"
+COGNITO_LOGIN_HOSTNAME = "mls-cognito-auth8.deaddodgeydigitaldeals.com"
+SUBDOMAIN_NAME = "cw-cognito-implicit-demo"

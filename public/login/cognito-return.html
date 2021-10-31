@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function findHash() {
+            const URL_FRAGMENT_NAME_ID = "id_token=";
+            const URL_FRAGMENT_NAME_TYPE = "token_type=";
+            let hash = window.location.hash;
+            if (hash && hash.trim().length) {
+                //alert("Hash is: " + hash);
+                if (hash.length > 0) {
+                    let hashVal = hash.substring(1);
+                    let hashValElements = hashVal.split("&");
+                    if (hashValElements && hashValElements.length > 0) {
+                        var foundIdToken = false;
+                        var foundTokenType = false;
+                        for (var qq = 0; qq < hashValElements.length; qq++) {
+                            let hashValEl = hashValElements[qq];
+                            if (hashValEl.startsWith(URL_FRAGMENT_NAME_ID)) {
+                                foundIdToken = true;
+                                document.getElementById("authToken").value = hashValEl.substring(URL_FRAGMENT_NAME_ID.length);
+                            } else if (hashValEl.startsWith(URL_FRAGMENT_NAME_TYPE)) {
+                                foundTokenType = true;
+                                document.getElementById("authTokenType").value = hashValEl.substring(URL_FRAGMENT_NAME_TYPE.length);
+                            }
+                        }
+                        if (foundIdToken && foundTokenType) {
+                            document.getElementById("hashValForm").submit();
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+</head>
+
+<body onload="findHash()">
+    Back from Cognito
+    <form id="hashValForm" method="POST" action="/">
+        <input type="hidden" id="authToken" name="authToken" value="">
+        <input type="hidden" id="authTokenType" name="authTokenType" value="">
+    </form>
+</body>
+
+</html>

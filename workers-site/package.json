@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "version": "1.0.1",
+  "description": "A template for kick starting a Cloudflare Workers project",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@cloudflare/kv-asset-handler": "~0.1.2",
+    "@my-liminal-space/cw-site-assets": "^1.0.3",
+    "@my-liminal-space/cw-validate-cognito-jwt": "^1.0.1"    
+  }
+}

@@ -10,6 +10,10 @@ It includes a basic (but functional) integration with the AWS Cognito Login UI.
 To see how it works, open the file "workers-site/index.js", the entry point is 
 the method "addEventListener".
 
+In addition to the config provided in wrangler.toml, a secret (set using 
+wrangler) called COGNITO_LOGIN_CLIENT_ID is required (app ID of Cognito App 
+Client).
+
 A deployed instance of the site is [available here](https://cw-cognito-implicit-demo.deaddodgeydigitaldeals.com/index.html).
 
 ## Deployment
